@@ -46,6 +46,9 @@ INSTALLED_APPS = [
 
     # Local
     'workplace_booking.apps.WorkplaceBookingConfig',
+    
+    # cors
+    "corsheaders",
 ]
 
 REST_FRAMEWORK = {
@@ -81,6 +84,8 @@ TEMPLATES = [
         },
     },
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
