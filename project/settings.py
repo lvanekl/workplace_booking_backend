@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     # 3rd party
     'rest_framework',
+    'rest_framework_simplejwt',
 
     # Local
     'workplace_booking.apps.WorkplaceBookingConfig',
@@ -54,7 +55,12 @@ INSTALLED_APPS = [
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
-    ]
+    ],
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication', 
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
 }
 
 MIDDLEWARE = [
