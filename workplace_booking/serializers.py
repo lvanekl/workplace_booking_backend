@@ -112,8 +112,8 @@ class BookWorkplaceSerializer(serializers.ModelSerializer):
         #        3) Место занято текущим пользователем => удаляем его бронь
         #           (Your booking on workplace {workplace} at {date} have been successfully deleted. Now everyone can book it)
 
-        date = self.context['request'].POST['date']
-        boolean_status = self.context['request'].POST.get('boolean_status', False)
+        date = self.context['request'].data.get('date')
+        boolean_status = self.context['request'].data.get('boolean_status')
 
         # если просят забронировать
         if boolean_status:
