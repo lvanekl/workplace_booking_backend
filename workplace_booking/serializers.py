@@ -23,7 +23,7 @@ class FloorDetailSerializer(serializers.ModelSerializer):
 
 class RoomSerializer(serializers.ModelSerializer):
     class Meta:
-        fields = ('id', 'name', 'index_on_map',)
+        fields = ('id', 'name', 'index_on_map', 'area_x1', 'area_y1', 'area_x2', 'area_y2',)
         model = Room
 
 
@@ -33,6 +33,7 @@ class RoomDetailSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('id', 'name',
                   'rows', 'columns',
+                  'index_on_map',
                   'workplaces_info',)
         model = Room
 
@@ -91,7 +92,7 @@ class BookWorkplaceSerializer(serializers.ModelSerializer):
     booking_status = serializers.SerializerMethodField(method_name='book_workplace')
 
     class Meta:
-        fields = ('date', 'boolean_status', 'booking_status', )
+        fields = ('date', 'boolean_status', 'booking_status',)
         model = Workplace
 
     def book_workplace(self, workplace):

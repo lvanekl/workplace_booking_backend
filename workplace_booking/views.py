@@ -27,7 +27,6 @@ class StatusList(generics.ListAPIView):
     serializer_class = StatusSerializer
 
 
-# TODO вопрос от какого класса наследоваться
 class BookWorkplace(generics.UpdateAPIView):
     queryset = Workplace.objects.all()
     serializer_class = BookWorkplaceSerializer
