@@ -10,7 +10,8 @@ class Floor(models.Model):
     width = models.IntegerField(null=True, default=None, blank=True)
     height = models.IntegerField(null=True, default=None, blank=True)
 
-    svg_map = models.FileField(null=True, default=None, upload_to='floor_images/', blank=True)
+    svg_map = models.FileField(null=True, default=None, upload_to='floor_images/',
+                               blank=True)  # TODO переименовать, потому что это больше не svg
     png_map = models.FileField(null=True, default=None, upload_to='floor_images/', blank=True)
 
     default_x_coordinate = models.IntegerField(blank=True, default=0)
@@ -26,7 +27,12 @@ class Room(models.Model):
     rows = models.IntegerField()
     columns = models.IntegerField()
 
-    index_on_map = models.IntegerField(blank=True, null=True)
+    # svg info
+    index_on_map = models.IntegerField(blank=True, null=True)  # TODO убрать поле, потому что избавились от svg
+    area_x1 = models.IntegerField(blank=True, null=True)
+    area_y1 = models.IntegerField(blank=True, null=True)
+    area_x2 = models.IntegerField(blank=True, null=True)
+    area_y2 = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -38,9 +44,10 @@ class Workplace(models.Model):
     index = models.IntegerField()
     # room.workplaces => unique ??? я забыл что имел ввиду под этим коментом
     column_id = models.IntegerField(blank=True, null=True)
-                                    # validators=[MinValueValidator(0), MaxValueValidator(room.columns-1)])
+    # validators=[MinValueValidator(0), MaxValueValidator(room.columns-1)])
     row_id = models.IntegerField(blank=True, null=True)
-                                 # validators=[MinValueValidator(0), MaxValueValidator(room.rows-1)])
+
+    # validators=[MinValueValidator(0), MaxValueValidator(room.rows-1)])
 
     class Meta:
         unique_together = ('room', 'column_id', 'row_id',)

@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import FloorList, FloorDetail, RoomDetail, StatusList, BookWorkplace, BookMultipleWorkplaces, GenerateStatuses
+from .views import FloorList, FloorDetail, RoomDetail, StatusList, BookWorkplace, BookMultipleWorkplaces, \
+    GenerateStatuses
 
 urlpatterns = [
     path('floor/', FloorList.as_view()),

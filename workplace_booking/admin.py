@@ -9,7 +9,16 @@ class FloorAdmin(admin.ModelAdmin):
 
 class RoomAdmin(admin.ModelAdmin):
     model = Room
-    list_display = ('id', 'floor', 'name', 'index_on_map', 'rows', 'columns')
+    list_display = ('id', 'floor', 'name', 'rows', 'columns',
+                    'index_on_map',
+                    'area_x1', 'area_y1', 'area_x2', 'area_y2'
+                    )
+
+    fieldsets = (
+        ('Main info', {'fields': ('id', 'floor', 'name')}),
+        ('Room info', {'fields': ('rows', 'columns')}),
+        ('SVG info', {'fields': ('index_on_map', 'area_x1', 'area_y1', 'area_x2', 'area_y2')}),
+    )
 
 
 class WorkplaceAdmin(admin.ModelAdmin):
