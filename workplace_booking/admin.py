@@ -15,7 +15,7 @@ class RoomAdmin(admin.ModelAdmin):
                     )
 
     fieldsets = (
-        ('Main info', {'fields': ('id', 'floor', 'name')}),
+        ('Main info', {'fields': ('floor', 'name')}),
         ('Room info', {'fields': ('rows', 'columns')}),
         ('SVG info', {'fields': ('index_on_map', 'area_x1', 'area_y1', 'area_x2', 'area_y2')}),
     )
